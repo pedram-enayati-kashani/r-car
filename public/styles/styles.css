@@ -1,16 +1,44 @@
+:root{
+    --navi: #16325B;
+    --teal: #227B94;
+    --blue: #78B7D0;
+    --light_blue: #38e2ff;
+    --yellow: #FFDC7F;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+
 *{
     font-family: serif;
 }
 
 #header{
-    border-bottom: 2px solid;
     box-shadow: 0px 3px 20px -8px #666db9;
+    background: linear-gradient(to right, var(--teal), var(--navi));
 }
 
-#header .titleHeader{
-    font-size: 22px;
+#header nav a{
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--light_blue);
 }
 
 .cars .card {
     width: 15.3rem;
+}
+
+form label{
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--navi);
+}
+
+form input{
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    color: var(--teal) !important;
 }

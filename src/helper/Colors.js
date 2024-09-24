@@ -1,0 +1,5 @@
+export const Navi = "#16325B"
+export const Teal = "#227B94"
+export const Blue = "#78B7D0"
+export const LightBlue = "#38e2ff"
+export const Yellow = "#FFDC7F"
