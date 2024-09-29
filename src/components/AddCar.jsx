@@ -1,16 +1,20 @@
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import {Navi} from "../helper/Colors";
 import {useState} from "react";
+import DataBase from "../helper/DataBase";
 
 const AddCar = () => {
 
     const [formData, setFormData] = useState({
         name: "",
         content: "",
-        imageAddress: ""
+        imageAddress: "",
+        id: "",
     });
 
     const [errors,setErrors] = useState({});
+
+    const navigate = useNavigate();
 
     const validate = () => {
         const newErrors = {};
@@ -32,10 +36,21 @@ const AddCar = () => {
         return Object.keys(newErrors).length === 0;
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (validate()){
-            console.log("فرم معتبر است و ارسال شد",formData)
+            try{
+                const resultId = await DataBase.correctId();
+                const newPost = {...formData,id:resultId};
+                const {status} = await DataBase.createPost(newPost);
+                if (status === 201){
+                    setFormData({});
+                    navigate('/');
+                }
+
+            }catch (err){
+                console.log(err.message);
+            }
         }
     }
 
